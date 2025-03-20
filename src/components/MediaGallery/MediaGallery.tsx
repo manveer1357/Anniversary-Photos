@@ -74,7 +74,7 @@ const MediaGallery = ({ resources }: MediaGalleryProps) => {
                 }
 
                 return (
-                  <div key={resource.public_id} className="bg-transparent">
+                  <div key={resource.public_id} className="xl:row-span-2 bg-transparent">
                     <div className="relative bg-zinc rounded-md">
                       <label className={`bg-transparent absolute ${isChecked ? 'opacity-100' : 'opacity-0'} hover:opacity-100 transition-opacity top-3 left-3 p-1`} htmlFor={resource.public_id}>
                         <span className="sr-only">
