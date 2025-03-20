@@ -26,7 +26,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="flex  items-center h-auto py-4">
+    <nav className="flex sticky items-center h-auto py-4">
       <Container className={`flex justify-between gap-2 items-center flex-row ${isMobile ? 'flex-col' : 'flex-row'}`}>
         <h1 className="w-auto flex-grow-0 mb-0">
           <Link href="/">
