@@ -8,7 +8,7 @@ cloudinary.config({
 });
 
 export default async function Home() {
-  const { resources } = await cloudinary.api.resources_by_tag('Mehandi_photos', { max_results: 214 });
+  const { resources } = await cloudinary.api.resources_by_tag('Jaago_photos', { max_results: 184 });
   return (
     <div className="h-full mt-6">
       <MediaGallery

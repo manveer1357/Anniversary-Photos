@@ -1,9 +1,10 @@
 import '@/app/globals.css';
-import { Image } from 'lucide-react'
+import { Image } from 'lucide-react';
 
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import SidebarLinks from '@/components/SidebarLinks';
+import Providers from '../providers';
 
 export default function RootLayout({
   children,
@@ -19,13 +20,23 @@ export default function RootLayout({
             links={[
               {
                 icon: <Image className="w-5 h-5" />,
-                label: 'Photos',
-                path: '/'
+                label: 'Mehandi Photos',
+                path: '/',
+              },
+              {
+                icon: <Image className="w-5 h-5" />,
+                label: 'Jaago Photos',
+                path: '/Jaago',
+              },
+              {
+                icon: <Image className="w-5 h-5" />,
+                label: 'Anniversary Photos',
+                path: '/Anniversary',
               }
             ]}
           />
         </aside>
-        <div>{ children }</div>
+        <Providers>{ children }</Providers>
       </main>
       <Footer />
     </div>

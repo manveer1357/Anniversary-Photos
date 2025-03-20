@@ -1,11 +1,16 @@
 import Container from '@/components/Container';
+import { Heart } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="mt-20">
-      <Container className="p-6">
+    <footer className="flex mt-20">
+      <Container className="flex flex-center p-6">
         <p className="text-center text-zinc-500">
-          Built with <a className="underline font-medium text-inherit" href="https://cloudinary.com/">Cloudinary</a> &amp; <a className="underline font-medium text-inherit" href="https://nextjs.org/">Next.js</a> by <a className="underline font-medium text-inherit" href="https://twitter.com/colbyfayock">Colby Fayock</a>
+          Built with 
+        </p>
+        <Heart className='w-6 h-6 mx-2' color='red' fill='red'/>
+        <p className="text-center text-zinc-500">
+          by Manveer Singh
         </p>
       </Container>
     </footer>
