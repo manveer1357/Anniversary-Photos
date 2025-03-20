@@ -10,23 +10,11 @@ import { cloudinaryResources } from '@/types/cloudinary';
 import CldImage from '../CldImage';
 import DownloadBtn from '../downloadBtnViewer';
 
-interface Deletion {
-  state: string;
-}
-
 interface MediaViewerProps {
   resource: cloudinaryResources;
 }
 
 const MediaViewer = ({ resource }: MediaViewerProps) => {
-  const [deletion, setDeletion] = useState<Deletion>();
-  // Canvas sizing based on the image dimensions. The tricky thing about
-  // showing a single image in a space like this in a responsive way is trying
-  // to take up as much room as possible without distorting it or upscaling
-  // the image. Since we have the resource width and height, we can dynamically
-  // determine whether it's landscape, portrait, or square, and change a little
-  // CSS to make it appear centered and scalable!
-
   const canvasHeight = resource.height;
   const canvasWidth = resource.width;
 
@@ -51,47 +39,6 @@ const MediaViewer = ({ resource }: MediaViewerProps) => {
     if (screen.width > 768) {
       imgStyles.height = '100vh';
       imgStyles.width = 'auto';
-    }
-  }
-
-  /**
-   * closeMenus
-   * @description Closes all panel menus and dialogs
-   */
-
-  function closeMenus() {
-    setDeletion(undefined)
-  }
-
-  /**
-   * handleOnDeletionOpenChange
-   */
-
-  function handleOnDeletionOpenChange(isOpen: boolean) {
-    // Reset deletion dialog if the user is closing it
-    if ( !isOpen ) {
-      setDeletion(undefined);
-    }
-  }
-
-  // Listen for clicks outside of the panel area and if determined
-  // to be outside, close the panel. This is marked by using
-  // a data attribute to provide an easy way to reference it on
-  // multiple elements
-
-  useEffect(() => {
-    document.body.addEventListener('click', handleOnOutsideClick)
-    return () => {
-      document.body.removeEventListener('click', handleOnOutsideClick)
-    }
-  }, []);
-
-  function handleOnOutsideClick(event: MouseEvent) {
-    const excludedElements = Array.from(document.querySelectorAll('[data-exclude-close-on-click="true"]'));
-    const clickedExcludedElement = excludedElements.filter(element => event.composedPath().includes(element)).length > 0;
-
-    if ( !clickedExcludedElement ) {
-      closeMenus();
     }
   }
 

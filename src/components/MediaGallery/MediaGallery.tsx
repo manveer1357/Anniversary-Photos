@@ -11,30 +11,18 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { cloudinaryResources } from '@/types/cloudinary';
 import DownloadBtn from '../downloadBtngallery';
 
-import styles from './MediaGallery.module.css';
-
 interface MediaGalleryProps {
   resources: Array<cloudinaryResources>
 }
 
 const MediaGallery = ({ resources }: MediaGalleryProps) => {
   const [selected, setSelected] = useState<Array<string>>([]);
-  const [creation, setCreation] = useState();
 
   /**
    * handleOnClearSelection
    */
   function handleOnClearSelection() {
     setSelected([]);
-  }
-
-  /**
-   * handleOnCreationOpenChange
-   */
-  function handleOnCreationOpenChange(isOpen: boolean) {
-    if (!isOpen) {
-      setCreation(undefined);
-    }
   }
 
   return (
