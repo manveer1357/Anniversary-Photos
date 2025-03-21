@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { X } from 'lucide-react';
 import { CldImage } from 'next-cloudinary';
@@ -17,12 +17,25 @@ interface MediaGalleryProps {
 
 const MediaGallery = ({ resources }: MediaGalleryProps) => {
   const [selected, setSelected] = useState<Array<string>>([]);
-
   /**
    * handleOnClearSelection
    */
   function handleOnClearSelection() {
     setSelected([]);
+  }
+
+  function handleDownload() {
+    selected.forEach((id) => {
+      const resource = resources.find((resource) => resource.public_id === id);
+      if (resource) {
+        const link = document.createElement('a');
+        link.href = resource.secure_url; // Use the secure URL of the image
+        link.download = resource.public_id; // Set the filename for the download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    });
   }
 
   return (

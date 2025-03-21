@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
 
 interface DownloadBtnProps {
-  resources: cloudinaryResources | cloudinaryResources[];
+  resources: cloudinaryResources;
 }
 
 const DownloadBtn = ({ resources }: DownloadBtnProps) => {

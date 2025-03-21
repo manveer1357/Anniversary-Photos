@@ -2,10 +2,10 @@ import { cloudinaryResources } from '../types/cloudinary';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
 
-const iconColor = 'text-black';
+
 
 interface DownloadBtnProps {
-  resources: cloudinaryResources | cloudinaryResources[];
+  resources: cloudinaryResources[];
 }
 
 const DownloadBtn = ({ resources }: DownloadBtnProps) => {
@@ -23,8 +23,11 @@ const DownloadBtn = ({ resources }: DownloadBtnProps) => {
           const a = document.createElement('a');
           a.href = url;
           a.download = `${resource.public_id}.${resource.format}`;
+          document.body.appendChild(a);
           a.click();
+          document.body.removeChild(a);
           window.URL.revokeObjectURL(url);
+          document.body.removeChild(a);
         })
         .catch(error => {
           console.error('There was a problem with the fetch operation:', error);
